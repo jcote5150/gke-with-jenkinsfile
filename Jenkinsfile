@@ -100,5 +100,4 @@ pipeline {
         }
     }
     // [END tf-apply]
-  }
 }
