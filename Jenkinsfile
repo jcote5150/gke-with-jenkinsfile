@@ -22,7 +22,7 @@ pipeline {
     stage('TF init & validate') {
       when { anyOf {branch "prod";branch "dev";changeRequest() } }
       steps {
-        container('terraform') {
+         {
           sh '''
           if [[ $CHANGE_TARGET ]]; then
             TARGET_ENV=$CHANGE_TARGET
@@ -57,7 +57,7 @@ pipeline {
     stage('TF plan') {
       when { anyOf {branch "prod";branch "dev";changeRequest() } }
       steps {
-        container('terraform') {
+        {
           sh '''
           if [[ $CHANGE_TARGET ]]; then
             TARGET_ENV=$CHANGE_TARGET
@@ -91,7 +91,7 @@ pipeline {
     stage('TF Apply') {
       when { anyOf {branch "prod";branch "dev" } }
       steps {
-        container('terraform') {
+         {
           sh '''
           TARGET_ENV=$BRANCH_NAME
           if [ -d "example-pipelines/environments/${TARGET_ENV}/" ]; then
