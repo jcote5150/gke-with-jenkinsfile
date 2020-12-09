@@ -1,0 +1,1 @@
+../../gke/outputs.tf
