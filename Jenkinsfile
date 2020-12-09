@@ -55,7 +55,6 @@ pipeline {
     stage('TF plan') {
       when { anyOf {branch "prod";branch "dev";changeRequest() } }
       steps {
-        {
           sh '''
           if [[ $CHANGE_TARGET ]]; then
             TARGET_ENV=$CHANGE_TARGET
@@ -81,7 +80,6 @@ pipeline {
             done
           fi'''
         }
-      }
     }
     // [END tf-plan]
 
@@ -89,7 +87,6 @@ pipeline {
     stage('TF Apply') {
       when { anyOf {branch "prod";branch "dev" } }
       steps {
-         {
           sh '''
           TARGET_ENV=$BRANCH_NAME
           if [ -d "example-pipelines/environments/${TARGET_ENV}/" ]; then
@@ -101,7 +98,6 @@ pipeline {
             echo "*************************************************"
           fi'''
         }
-      }
     }
     // [END tf-apply]
   }
