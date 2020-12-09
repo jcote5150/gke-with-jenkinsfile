@@ -22,7 +22,6 @@ pipeline {
     stage('TF init & validate') {
       when { anyOf {branch "prod";branch "dev";changeRequest() } }
       steps {
-         {
           sh '''
           if [[ $CHANGE_TARGET ]]; then
             TARGET_ENV=$CHANGE_TARGET
@@ -49,7 +48,6 @@ pipeline {
             done
           fi'''
         }
-      }
     }
     // [END tf-init, tf-validate]
 
