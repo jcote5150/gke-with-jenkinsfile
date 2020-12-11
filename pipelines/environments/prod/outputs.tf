@@ -1,1 +1,1 @@
-../../example-create/outputs.tf
+../../gke/outputs.tf
