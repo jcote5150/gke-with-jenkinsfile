@@ -15,8 +15,6 @@
 
 terraform {
   backend "gcs" {
-    project = "jc-jenkins-for-terraform"
-    region = "us-central1"
     bucket = "jc-jenkins-tfstate"
     prefix = "env/dev"
   }
