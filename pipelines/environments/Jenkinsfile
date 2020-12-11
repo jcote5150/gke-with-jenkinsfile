@@ -20,6 +20,11 @@ pipeline {
         label "master"
       }
     }
+
+    environment {
+        GOOGLE_PROJECT_ID = ' jc-jenkins-for-terraform';
+        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('tf-deployer');
+    }
   stages {
     // [START tf-init, tf-validate]
     stage('TF init & validate') {
@@ -87,21 +92,21 @@ pipeline {
     // [END tf-plan]
 
     // [START tf-apply]
-    stage('TF Apply') {
-      when { anyOf {branch "prod";branch "dev" } }
-      steps {
-          sh '''
-          TARGET_ENV=$BRANCH_NAME
-          if [ -d "pipelines/environments/${TARGET_ENV}/" ]; then
-            cd pipelines/environments/${TARGET_ENV}
-            terraform apply -input=false -auto-approve
-          else
-            echo "*************** SKIPPING APPLY ******************"
-            echo "Branch '$TARGET_ENV' does not represent an official environment."
-            echo "*************************************************"
-          fi'''
-        }
-    }
+//     stage('TF Apply') {
+//       when { anyOf {branch "prod";branch "dev" } }
+//       steps {
+//           sh '''
+//           TARGET_ENV=$BRANCH_NAME
+//           if [ -d "pipelines/environments/${TARGET_ENV}/" ]; then
+//             cd pipelines/environments/${TARGET_ENV}
+//             terraform apply -input=false -auto-approve
+//           else
+//             echo "*************** SKIPPING APPLY ******************"
+//             echo "Branch '$TARGET_ENV' does not represent an official environment."
+//             echo "*************************************************"
+//           fi'''
+//         }
+//     }
     // [END tf-apply]
    }
 }
