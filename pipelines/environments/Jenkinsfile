@@ -23,7 +23,7 @@ pipeline {
 
     environment {
         GOOGLE_PROJECT_ID = ' jc-jenkins-for-terraform';
-        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('tfdeployer');
+        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('tf-deployer');
     }
   stages {
     // [START tf-init, tf-validate]
