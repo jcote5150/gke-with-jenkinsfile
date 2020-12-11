@@ -1,1 +1,1 @@
-/Users/joelcote/jenkins/pipelines/gke-with-jenkinsfile/gke/main.tf
+../../gke/main.tf
