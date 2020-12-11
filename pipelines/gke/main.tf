@@ -33,7 +33,6 @@ module "enables-google-apis" {
     "storage-component.googleapis.com",
     "logging.googleapis.com",
     "monitoring.googleapis.com",
-    "cloudasset.googleapis.com",
   ]
 }
 
